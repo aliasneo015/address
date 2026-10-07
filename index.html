@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address - Property & Payment Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff9500;
+            --primary-dark: #e67e00;
+            --bg-light: #ffffff;
+            --bg-dark: #1a1a1a;
+            --text-light: #333333;
+            --text-dark: #f0f0f0;
+            --border-light: #e0e0e0;
+            --border-dark: #333333;
+            --card-light: #f9f9f9;
+            --card-dark: #2a2a2a;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-theme {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        body.dark-theme {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        header {
+            background: var(--primary-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-light);
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px var(--shadow-light);
+        }
+
+        body.dark-theme .service-card {
+            background: var(--card-dark);
+            border-color: var(--border-dark);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-light);
+            border-color: var(--primary-color);
+        }
+
+        body.dark-theme .service-card:hover {
+            box-shadow: 0 8px 20px var(--shadow-dark);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: var(--card-light);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px var(--shadow-light);
+        }
+
+        body.dark-theme .feature-item {
+            background: var(--card-dark);
+        }
+
+        .feature-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-light);
+            border-top: 2px solid var(--border-light);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        body.dark-theme footer {
+            background: var(--card-dark);
+            border-top-color: var(--border-dark);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .services h2,
+            .features h2 {
+                font-size: 1.5rem;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">🏠 Address</div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Address</h1>
+        <p>Your Complete Solution for Properties, Household Services & Payments</p>
+        <button class="cta-button" onclick="scrollToServices()">Explore Services</button>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <!-- Residential -->
+            <div class="service-card">
+                <div class="service-icon">🏘️</div>
+                <h3>Residential</h3>
+                <p>Find and manage residential properties. Connect with property owners, view listings, and manage your residential space efficiently.</p>
+            </div>
+
+            <!-- Commercial -->
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Commercial</h3>
+                <p>Explore commercial real estate opportunities. Rent, buy, or list commercial spaces for your business needs.</p>
+            </div>
+
+            <!-- Shared (PG) -->
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>Shared (PG)</h3>
+                <p>Discover affordable shared accommodations and paying guest facilities. Perfect for students and professionals.</p>
+            </div>
+
+            <!-- Household Services -->
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Household Services</h3>
+                <p>Connect with reliable professionals - Electricians, Plumbers, Carpenters, and more. Book services instantly.</p>
+            </div>
+
+            <!-- Payment Services -->
+            <div class="service-card">
+                <div class="service-icon">💳</div>
+                <h3>Payment Services</h3>
+                <p>Collect rent, pay taxes, and manage property-related payments securely and conveniently.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose Address?</h2>
+        <div class="features-list">
+            <div class="feature-item">
+                <h4>✓ Trusted Platform</h4>
+                <p>Verified service providers and property listings you can trust</p>
+            </div>
+            <div class="feature-item">
+                <h4>✓ Easy to Use</h4>
+                <p>Intuitive interface designed for everyone, from homeowners to tenants</p>
+            </div>
+            <div class="feature-item">
+                <h4>✓ Secure Payments</h4>
+                <p>Safe and encrypted payment processing for all transactions</p>
+            </div>
+            <div class="feature-item">
+                <h4>✓ 24/7 Support</h4>
+                <p>Customer support available round the clock to help you</p>
+            </div>
+            <div class="feature-item">
+                <h4>✓ Fast Service</h4>
+                <p>Quick booking, instant confirmations, and rapid service delivery</p>
+            </div>
+            <div class="feature-item">
+                <h4>✓ Transparent Pricing</h4>
+                <p>No hidden charges, clear pricing with detailed breakdowns</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Address. All rights reserved. | Your trusted platform for properties and services</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+
+            if (body.classList.contains('light-theme')) {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                button.textContent = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                button.textContent = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function scrollToServices() {
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Load saved theme preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const button = document.querySelector('.theme-toggle');
+
+            if (savedTheme === 'dark') {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                button.textContent = '☀️ Light Mode';
+            } else {
+                body.classList.add('light-theme');
+                button.textContent = '🌙 Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>
